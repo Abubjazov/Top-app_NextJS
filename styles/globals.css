@@ -1,33 +1,35 @@
 html,
 body {
-	margin: 0;
-	padding: 0;
-	color: var(--black);
-	background: var(--main-bg);
+  margin: 0;
+  padding: 0;
+  color: var(--black);
+  background: var(--main-bg);
 
-	font-family: var(--font-family);
+  font-family: var(--font-family);
 }
 
 a {
-	text-decoration: none;
+  text-decoration: none;
 
-	color: inherit;
+  color: inherit;
 }
 
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :root {
-	--black: #3B434E;
-	--white: #FFF;
-	--primary: #7653FC;
-	--orange: #FC836D;
-	--green: #1DC37E;
-	--green-light: #C8F8E4;
-	--red: #DE0000;
-	--gold: #DCB44E;
-	--main-bg: #E5E5E5;
-	--feedback-bg: #F9F8FF;
-	--font-family: "Noto Sans Display", sans-serif;
+  --black: #3b434e;
+  --white: #fff;
+  --gray-light: #ebebeb;
+  --primary: #7653fc;
+  --primary-hover: #6344df;
+  --orange: #fc836d;
+  --green: #1dc37e;
+  --green-light: #c8f8e4;
+  --red: #de0000;
+  --gold: #dcb44e;
+  --main-bg: #e5e5e5;
+  --feedback-bg: #f9f8ff;
+  --font-family: 'Noto Sans Display', sans-serif;
 }
