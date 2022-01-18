@@ -8,9 +8,7 @@ export default function Home(): JSX.Element {
         <Htag tag='h3'><span>Some</span> text</Htag>
         <Button appearance='primary' className='arr13' arrow='down'>Primary</Button>
         <Button appearance='ghost' arrow='right'>Ghost</Button>
-        <Ptag 
-          fontSz='s' 
-          innerText='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi vitae ea, eligendi sit inventore, sequi quae ab dolor maxime quod vero alias architecto. Minus similique quae porro, perspiciatis vero dolorum!' />
+        <Ptag fontSz='s'>'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi vitae ea, eligendi sit inventore, sequi quae ab dolor maxime quod vero alias architecto. Minus similique quae porro, perspiciatis vero dolorum!'</Ptag>
     </>
   )
 }

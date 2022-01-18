@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { PtagProps } from './Ptag.props'
 import styles from './Ptag.module.css'
 
-export const Ptag = ({fontSz = 'm', innerText, className, ...props}: PtagProps) => {
+export const Ptag = ({fontSz = 'm', children, className, ...props}: PtagProps) => {
 	return (
 		<p
 			className={cn(styles.p, className, {
@@ -13,7 +13,7 @@ export const Ptag = ({fontSz = 'm', innerText, className, ...props}: PtagProps) 
 			})}
 			{...props}
 		>
-			{innerText}
+			{children}
 		</p>
 	)
 }
