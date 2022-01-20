@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, KeyboardEvent } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
 
@@ -24,6 +24,8 @@ export const Rating = ({isEditable = false, rating, setRating, ...props}: Rating
 					onMouseEnter={() => changeDisplay(index + 1)}
 					onMouseLeave={() => changeDisplay(rating)}
 					onClick={() => changeClick(index + 1)}
+					tabIndex={isEditable ? 0 : -1}
+					onKeyDown={(e: KeyboardEvent<SVGElement>) => isEditable && spaceDown(index + 1, e) }
 				/>
 			)
 		})
@@ -39,6 +41,12 @@ export const Rating = ({isEditable = false, rating, setRating, ...props}: Rating
 
 	const changeClick = (index: number): void => {
 		if(!isEditable || !setRating) return
+
+		setRating(index)
+	}
+
+	const spaceDown = (index: number, e: KeyboardEvent<SVGElement>): void => {
+		if(!isEditable || !setRating || e.code !== 'Space') return
 
 		setRating(index)
 	}
