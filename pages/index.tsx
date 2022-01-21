@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Button, Htag, Ptag, Rating, Tag } from '../components'
 
 export default function Home(): JSX.Element {
