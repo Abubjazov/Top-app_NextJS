@@ -5,7 +5,6 @@ import axios from 'axios'
 import { Button, Htag, Ptag, Rating, Tag } from '../components'
 import { withLayout } from '../HOC/withLayout'
 import { MenuItem } from '../interfaces/menu.interface'
-import { HomeProps } from '../interfaces/homeProps.interface'
 
 function Home({menu}: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(0)
@@ -47,4 +46,9 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       firstCategory
     }
   }
+}
+
+export interface HomeProps extends Record<string, unknown> {
+	menu: MenuItem[],
+	firstCategory: number
 }

@@ -11,7 +11,7 @@ export const Rating = ({isEditable = false, rating, setRating, ...props}: Rating
 
 	useEffect(() => {
 		constructRating(rating)
-	}, [rating])
+	}, [rating]) // eslint-disable-line react-hooks/exhaustive-deps
 
 	const constructRating = (currentRating: number) => {
 		const updatedArray = ratingArray.map((item: JSX.Element, index: number) => {
