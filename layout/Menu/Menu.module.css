@@ -1,24 +1,60 @@
-.footer {
-  background: var(--primary);
-  color: var(--white);
-  padding: 25px 30px;
-  font-size: 16px;
-  line-height: 20px;
-
+.firstLevel {
+  margin-top: 13px;
   display: grid;
-  grid-template-columns: 1fr auto auto;
-  gap: 40px;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  transition: all 0.2s;
 }
 
-.footer a:hover {
-  color: var(--gray-light);
+.firstLevelActive,
+.firstLevel:hover {
+  color: var(--primary);
 }
 
-@media (max-width: 765px) {
-  .footer {
-    grid-template-columns: 1fr;
-    gap: 5px;
-    font-size: 10px;
-    padding: 10px 20px;
-  }
+.firstLevelActive svg,
+.firstLevel:hover svg {
+  transition: all 0.2s;
+  fill: var(--primary);
+}
+
+.secondLevel {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.secondBlock {
+  margin-top: 15px;
+  margin-left: 13px;
+  padding-left: 20px;
+  border-left: 1px solid var(--gray-dark);
+}
+
+.secondLevelBlockOpened:last-child {
+  margin-bottom: 20px;
+}
+
+.thirdLevel {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: var(--gray-dark);
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 13px;
+  transition: all 0.2s;
+}
+
+.thirdLevelActive,
+.thirdLevel:hover {
+  color: var(--primary);
 }
