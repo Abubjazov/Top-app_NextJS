@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { ReactChild, ReactFragment, ReactPortal, useContext } from 'react'
+import { useContext } from 'react'
 import { nanoid } from 'nanoid'
 import Link from 'next/link'
 
@@ -65,11 +65,6 @@ export const Menu = (): JSX.Element => {
 			<div className={styles.secondBlock}>
 				{
 					menu.map((secondLevelMenuItem) => {
-
-						// if (secondLevelMenuItem.pages.map(page => page.alias).includes(router.asPath.split('/')[2])) {
-						// 	secondLevelMenuItem.isOpened = true
-						// }
-
 						return (
 							<div key={nanoid()}>
 								<div className={styles.secondLevel} onClick={() => openSecondLevel(secondLevelMenuItem._id.secondCategory)}>{secondLevelMenuItem._id.secondCategory}</div>
