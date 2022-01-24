@@ -1,7 +1,7 @@
-import axios from 'axios';
-import { GetStaticProps } from 'next';
-import { withLayout } from '../HOC/withLayout';
-import { MenuItem } from '../interfaces/menu.interface';
+import axios from 'axios'
+import { GetStaticProps } from 'next'
+import { withLayout } from '../HOC/withLayout'
+import { MenuItem } from '../interfaces/menu.interface'
 
 const Search = (): JSX.Element => {
 
@@ -24,10 +24,10 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 			menu,
 			firstCategory
 		}
-	};
-};
+	}
+}
 
 interface HomeProps extends Record<string, unknown> {
-	menu: MenuItem[];
-	firstCategory: number;
+	menu: MenuItem[]
+	firstCategory: number
 }
