@@ -3,6 +3,7 @@ import { TopPageComponentProps } from './TopPageComponent.props'
 
 import styles from './TopPageComponent.module.css'
 import { nanoid } from 'nanoid'
+import { TopLevelCategory } from '../../interfaces/page.interface'
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	return (
@@ -22,7 +23,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 				<Tag color='red' size='m'>hh.ru</Tag>
 			</div>
 
-			<HhDataBlock {...page.hh}/>
+			{firstCategory === TopLevelCategory.Courses && <HhDataBlock {...page.hh}/>}
 		</div>
 	)
 }
