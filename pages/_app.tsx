@@ -1,5 +1,6 @@
 import { AppProps } from 'next/dist/shared/lib/router/router'
 import Head from 'next/head'
+
 import '../styles/globals.css'
 
 function App({ Component, pageProps }: AppProps): JSX.Element {
@@ -12,6 +13,7 @@ function App({ Component, pageProps }: AppProps): JSX.Element {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
+
       <Component {...pageProps} />
     </>
   )  

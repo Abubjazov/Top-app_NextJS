@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next'
 import { ParsedUrlQuery } from 'querystring'
+
 import { firstLevelMenu } from '../../helpers/helper'
 import { withLayout } from '../../HOC/withLayout'
 import { MenuItem } from '../../interfaces/menu.interface'
 
 const Type = ({ firstCategory }: TypeProps): JSX.Element => {
-
 	return (
 		<>
 			Type: {firstCategory}
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps<TypeProps> = async ({ params }: GetS
 	
 	const { data: menu } = await axios.post<MenuItem[]>(process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
 		firstCategory: firstCategoryItem.id
-	});
+	})
 	return {
 		props: {
 			menu,

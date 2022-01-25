@@ -1,5 +1,5 @@
-import { ProductModel } from '../../interfaces/product.interface';
-import { SortEnum } from './Sort.props';
+import { ProductModel } from '../../interfaces/product.interface'
+import { SortEnum } from './Sort.props'
 
 export type SortActions = { type: SortEnum.Price } | { type: SortEnum.Rating }
 

@@ -1,10 +1,10 @@
 import { TopLevelCategory } from '../interfaces/page.interface'
 import { FirstLevelMenuItem } from '../interfaces/menu.interface'
 
-import CoursesIcon from './icons/Courses.svg'
-import ServicesIcon from './icons/Services.svg'
-import GoodsIcon from './icons/Goods.svg'
-import BooksIcon from './icons/Books.svg'
+import CoursesIcon from './icons/courses.svg'
+import ServicesIcon from './icons/services.svg'
+import GoodsIcon from './icons/goods.svg'
+import BooksIcon from './icons/books.svg'
 
 export const firstLevelMenu: FirstLevelMenuItem[] = [
 	{route: 'courses', name: 'Курсы', icon: <CoursesIcon />, id: TopLevelCategory.Courses},
