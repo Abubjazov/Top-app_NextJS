@@ -2,11 +2,10 @@ import { GetStaticProps } from 'next'
 import React, { useState } from 'react'
 import axios from 'axios'
 
-import { Button, Htag, Input, Ptag, Rating, Tag } from '../components'
+import { Button, Htag, Input, Ptag, Rating, Tag, Textarea } from '../components'
 
 import { MenuItem } from '../interfaces/menu.interface'
 import { withLayout } from '../HOC/withLayout'
-
 
 function Home({ menu }: HomeProps): JSX.Element {
 	const [rating, setRating] = useState<number>(4);
@@ -22,6 +21,7 @@ function Home({ menu }: HomeProps): JSX.Element {
 			<Tag color='primary'>Green</Tag>
 			<Rating rating={rating} isEditable setRating={setRating} />
 			<Input placeholder='1111'/>
+			<Textarea placeholder='2222' />
 		</>
 	);
 }
