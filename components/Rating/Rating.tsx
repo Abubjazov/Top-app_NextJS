@@ -3,8 +3,9 @@ import cn from 'classnames'
 import { nanoid } from 'nanoid'
 
 import { RatingProps } from './Rating.props'
-import StarIcon from './star.svg'
 import styles from './Rating.module.css'
+
+import StarIcon from './star.svg'
 
 export const Rating = ({isEditable = false, rating, setRating, ...props}: RatingProps): JSX.Element => {
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))

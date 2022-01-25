@@ -1,9 +1,10 @@
-import { Advantages, HhDataBlock, Htag, Ptag, Tag } from '../../components'
+import { Advantages, HhDataBlock, Htag, Ptag, Sort, Tag } from '../../components'
 import { TopPageComponentProps } from './TopPageComponent.props'
 
 import styles from './TopPageComponent.module.css'
 import { nanoid } from 'nanoid'
 import { TopLevelCategory } from '../../interfaces/page.interface'
+import { SortEnum } from '../../components/Sort/Sort.props'
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	return (
@@ -11,7 +12,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 			<div className={styles.title}>
 				<Htag tag='h1'>{page.title}</Htag>
 				{products && <Tag color='grey' size='m'>{products.length}</Tag>}
-				<span>Сортировка</span>
+				<Sort sort={SortEnum.Rating} setSort={() => {}} />
 			</div>
 
 			<div>
