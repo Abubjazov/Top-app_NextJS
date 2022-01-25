@@ -1,4 +1,4 @@
-import { Card, HhDataBlock, Htag, Tag } from '../../components'
+import { Advantages, HhDataBlock, Htag, Tag } from '../../components'
 import { TopPageComponentProps } from './TopPageComponent.props'
 
 import styles from './TopPageComponent.module.css'
@@ -23,7 +23,8 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 				<Tag color='red' size='m'>hh.ru</Tag>
 			</div>
 
-			{firstCategory === TopLevelCategory.Courses && <HhDataBlock {...page.hh}/>}
+			{firstCategory === TopLevelCategory.Courses && page.hh && <HhDataBlock {...page.hh}/>}
+			{page.advantages && page.advantages.length > 0 && <Advantages advantages={page.advantages}/>}
 		</div>
 	)
 }
