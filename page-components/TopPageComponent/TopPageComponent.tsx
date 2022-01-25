@@ -1,4 +1,4 @@
-import { Advantages, HhDataBlock, Htag, Tag } from '../../components'
+import { Advantages, HhDataBlock, Htag, Ptag, Tag } from '../../components'
 import { TopPageComponentProps } from './TopPageComponent.props'
 
 import styles from './TopPageComponent.module.css'
@@ -25,6 +25,10 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 
 			{firstCategory === TopLevelCategory.Courses && page.hh && <HhDataBlock {...page.hh}/>}
 			{page.advantages && page.advantages[0]?.title.length > 0 && <Advantages advantages={page.advantages}/>}
+			{page.seoText && <Ptag fontSz='m'>{page.seoText}</Ptag>}
+
+			<Htag tag='h2'>Получаемые навыки</Htag>
+			{page.tags.map(tag => <Tag key={nanoid()} color='primary'>{tag}</Tag>)}
 		</div>
 	)
 }
