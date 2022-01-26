@@ -26,7 +26,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 			</div>
 
 			<div className={styles.tags}>
-				{product.categories.map(category => <Tag key={nanoid()} color={'ghost'}>{category}</Tag>)}
+				{product.categories.map(category => <Tag className={styles.category} key={nanoid()} color={'ghost'}>{category}</Tag>)}
 			</div>
 
 			<div className={styles.priseTitle}>цена</div>
@@ -36,25 +36,29 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 			<Divider className={styles.hr}/>
 
 			<div className={styles.description}>{product.description}</div>
-			<div className={styles.features}>FEATURES</div>
+			<div className={styles.features}>
+				<div className={styles.features}>Документ об окончании</div>
+				<div className={styles.features}>Сложность</div>
+				<div className={styles.features}>Длительность</div>	 
+			</div>
 
 			<div className={styles.advBlock}>
-				<div className={styles.advantages}>
-					<div>Преимущества</div>
+				{product.advantages && <div className={styles.advantages}>
+					<div className={styles.advTitle}>Преимущества</div>
 					<div>{product.advantages}</div>	
-				</div>
+				</div>}				
 
-				<div className={styles.disadvantages}>
-					<div>Недостатки</div>
+				{product.disadvantages && <div className={styles.disadvantages}>
+					<div className={styles.advTitle}>Недостатки</div>
 					<div>{product.disadvantages}</div>	
-				</div>
+				</div>}				
 			</div>
 
 			<Divider className={styles.hr}/>
 
 			<div className={styles.actions}>
 				<Button appearance={'primary'}>Узнать подробнее</Button>
-				<Button appearance={'ghost'} arrow={'right'}>Читать отзывы</Button>
+				<Button appearance={'ghost'} arrow={'right'} className={styles.reviewBtn}>Читать отзывы</Button>
 			</div>
 		</Card>
 	)

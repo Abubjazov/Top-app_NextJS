@@ -91,3 +91,46 @@
   margin-left: 5px;
   margin-bottom: 0;
 }
+
+.category {
+  margin-top: 7px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+
+.reviewBtn {
+  margin-left: 20px;
+}
+
+.advBlock {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.advTitle {
+  margin-bottom: 5px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.disadvantages {
+  padding-left: 15px;
+  border-left: 2px solid var(--red);
+  margin-bottom: 20px;
+}
+
+.advantages {
+  padding-left: 15px;
+  border-left: 2px solid var(--green);
+}
+
+.features {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 32px;
+}
