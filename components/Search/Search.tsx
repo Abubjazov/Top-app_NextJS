@@ -13,7 +13,7 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
 	const [search, setSearch] = useState<string>('')
 	const router = useRouter()
 
-	const goToSearch = () => {
+	const goToSearch = (): void => {
 		router.push({
 			pathname: '/search',
 			query: {
@@ -22,8 +22,8 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
 		})
 	}
 
-	const handleKeyDown = (e: KeyboardEvent) => {
-		e.key === 'Enter' ? goToSearch() : null
+	const handleKeyDown = (event: KeyboardEvent): void => {
+		event.key === 'Enter' ? goToSearch() : null
 	}
 
 	return (
