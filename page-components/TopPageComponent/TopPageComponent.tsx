@@ -1,4 +1,4 @@
-import { Advantages, HhDataBlock, Htag, Ptag, Sort, Tag } from '../../components'
+import { Advantages, HhDataBlock, Htag, Product, Ptag, Sort, Tag } from '../../components'
 import { TopPageComponentProps } from './TopPageComponent.props'
 
 import styles from './TopPageComponent.module.css'
@@ -24,7 +24,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 			</div>
 
 			<div>
-				{sortedProducts && sortedProducts.map(product => (<div key={nanoid()}>{product.title}</div>))}
+				{sortedProducts && sortedProducts.map(product => (<Product key={nanoid()} product={product} />))}
 			</div>
 
 			<div className={styles.hhTitle}>
