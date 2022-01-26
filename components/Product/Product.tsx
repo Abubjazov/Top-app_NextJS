@@ -1,11 +1,12 @@
-import cn from 'classnames'
+import Image from 'next/image'
 import { nanoid } from 'nanoid'
+import cn from 'classnames'
+
+import { Button, Card, Divider, Rating, Tag } from '..'
+import { declOfNum, priceRu } from '../../helpers/helper'
 
 import { ProductProps } from './Product.props'
 import styles from './Product.module.css'
-import { Button, Card, Divider, Rating, Tag } from '..'
-import { declOfNum, priceRu } from '../../helpers/helper'
-import Image from 'next/image'
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	return (
@@ -17,7 +18,6 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 					width={70}
 					height={70}
 				/>
-				{/* <img src={process.env.NEXT_PUBLIC_DOMAIN + product.image} alt={product.title} /> */}
 			</div>
 
 			<div className={styles.title}>{product.title}</div>
@@ -39,11 +39,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				{product.categories.map(category => <Tag className={styles.category} key={nanoid()} color={'ghost'}>{category}</Tag>)}
 			</div>
 
-			<div className={styles.priseTitle}>цена</div>
+			<div className={styles.priceTitle}>цена</div>
 			<div className={styles.creditTitle}>в кредит</div>
 			<div 
-				className={styles.ratingTitle}
-				
+				className={styles.ratingTitle}				
 			>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
 			</div>
 
@@ -73,7 +72,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				</div>}				
 			</div>
 
-			<Divider className={styles.hr}/>
+			<Divider className={cn(styles.hr, styles.hr2)}/>
 
 			<div className={styles.actions}>
 				<Button appearance={'primary'}>Узнать подробнее</Button>
