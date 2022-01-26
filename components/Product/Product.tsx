@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 
 import { ProductProps } from './Product.props'
 import styles from './Product.module.css'
-import { Button, Card, Rating, Tag } from '..'
+import { Button, Card, Divider, Rating, Tag } from '..'
 import { priceRu } from '../../helpers/helper'
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
@@ -33,7 +33,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 			<div className={styles.creditTitle}>в кредит</div>
 			<div className={styles.ratingTitle}>{product.reviewCount} отзывов</div>
 
-			<div className={styles.hr}><hr /></div>
+			<Divider className={styles.hr}/>
 
 			<div className={styles.description}>{product.description}</div>
 			<div className={styles.features}>FEATURES</div>
@@ -50,7 +50,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				</div>
 			</div>
 
-			<div className={styles.hr}><hr /></div>
+			<Divider className={styles.hr}/>
 
 			<div className={styles.actions}>
 				<Button appearance={'primary'}>Узнать подробнее</Button>
