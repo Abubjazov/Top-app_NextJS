@@ -45,3 +45,49 @@
 .advBlock {
   grid-column: middle / end;
 }
+
+.logo img {
+  border-radius: 5px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-end;
+
+  color: var(--black);
+}
+
+.price,
+.credit {
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 27px;
+  align-self: flex-end;
+
+  color: var(--black);
+}
+
+.credit > span {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.rating {
+  align-self: flex-end;
+}
+
+.priseTitle,
+.creditTitle,
+.ratingTitle {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--black);
+}
+
+.oldPrice {
+  margin-left: 5px;
+  margin-bottom: 0;
+}
