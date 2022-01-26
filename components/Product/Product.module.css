@@ -129,8 +129,24 @@
   border-left: 2px solid var(--green);
 }
 
-.features {
+.characteristics {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 1fr auto;
+  padding-right: 60px;
+  margin-bottom: 7px;
+  font-weight: 500;
+  font-size: 16px;
+  align-self: flex-end;
+}
+
+.charName {
   font-weight: 700;
   font-size: 16px;
-  line-height: 32px;
+  align-self: flex-end;
+}
+
+.charDots {
+  border-bottom: 1px dashed var(--gray-light);
+  margin-bottom: 7px;
 }
