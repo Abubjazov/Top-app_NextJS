@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import { ProductProps } from './Product.props'
 import styles from './Product.module.css'
 import { Button, Card, Divider, Rating, Tag } from '..'
-import { priceRu } from '../../helpers/helper'
+import { declOfNum, priceRu } from '../../helpers/helper'
 
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	return (
@@ -31,7 +31,11 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 
 			<div className={styles.priseTitle}>цена</div>
 			<div className={styles.creditTitle}>в кредит</div>
-			<div className={styles.ratingTitle}>{product.reviewCount} отзывов</div>
+			<div 
+				className={styles.ratingTitle}
+				
+			>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
+			</div>
 
 			<Divider className={styles.hr}/>
 
