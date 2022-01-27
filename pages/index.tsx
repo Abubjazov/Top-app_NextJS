@@ -8,7 +8,7 @@ import { MenuItem } from '../interfaces/menu.interface'
 import { withLayout } from '../HOC/withLayout'
 
 function Home({ menu }: HomeProps): JSX.Element {
-	const [rating, setRating] = useState<number>(4);
+	const [rating, setRating] = useState<number>(4)
 
 	return (
 		<>

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { nanoid } from 'nanoid'
 import cn from 'classnames'
 
-import { Button, Card, Divider, Rating, Review, Tag } from '..'
+import { Button, Card, Divider, Rating, Review, ReviewForm, Tag } from '..'
 import { declOfNum, priceRu } from '../../helpers/helper'
 
 import { ProductProps } from './Product.props'
@@ -100,6 +100,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 						<Divider />
 					</React.Fragment>
 				))}
+				<ReviewForm productId={product._id}/>
 			</Card>
 		</div>
 	)
