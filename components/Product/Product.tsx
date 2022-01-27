@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { nanoid } from 'nanoid'
 import cn from 'classnames'
 
-import { Button, Card, Divider, Rating, Tag } from '..'
+import { Button, Card, Divider, Rating, Review, Tag } from '..'
 import { declOfNum, priceRu } from '../../helpers/helper'
 
 import { ProductProps } from './Product.props'
@@ -14,8 +14,8 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 	const [reviewOpened, setReviewOpened] = useState<boolean>(false)
 
 	return (
-		<>
-			<Card className={styles.product} >
+		<div {...props}>
+			<Card className={styles.product}>
 				<div className={styles.logo}>
 					<Image 
 						src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
@@ -94,8 +94,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				[styles.opened]: reviewOpened,
 				[styles.closed]: !reviewOpened,
 			})}>
-				REVIEW
+				{product.reviews && product.reviews.map(review => (
+					<Review key={nanoid()} review={review}/>
+				))}
 			</Card>
-		</>
+		</div>
 	)
 }
