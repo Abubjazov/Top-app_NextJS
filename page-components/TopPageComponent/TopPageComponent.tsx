@@ -1,12 +1,13 @@
-import { Advantages, HhDataBlock, Htag, Product, Ptag, Sort, Tag } from '../../components'
-import { TopPageComponentProps } from './TopPageComponent.props'
-
-import styles from './TopPageComponent.module.css'
 import { nanoid } from 'nanoid'
+
 import { TopLevelCategory } from '../../interfaces/page.interface'
 import { SortEnum } from '../../components/Sort/Sort.props'
 import { useReducer } from 'react'
 import { sortReducer } from '../../components/Sort/sort.reducer'
+import { Advantages, HhDataBlock, Htag, Product, Ptag, Sort, Tag } from '../../components'
+import { TopPageComponentProps } from './TopPageComponent.props'
+
+import styles from './TopPageComponent.module.css'
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating})
