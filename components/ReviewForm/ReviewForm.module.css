@@ -27,3 +27,43 @@
 .info {
   margin-left: 15px;
 }
+
+.success {
+  margin-top: 10px;
+  background: var(--green-light);
+  padding: 10px;
+  position: relative;
+}
+
+.successTitle {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.successCross {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1160px) {
+  .reviewForm {
+    grid-template-columns: [start] 1fr [ratingend] 1fr [end];
+  }
+  .rating {
+    grid-column: start / ratingend;
+    grid-template-columns: 50px 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .reviewForm {
+    grid-template-columns: [start] 1fr [end];
+  }
+
+  .rating {
+    grid-column: start / end;
+    grid-template-columns: 50px 1fr;
+  }
+}

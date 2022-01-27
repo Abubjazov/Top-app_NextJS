@@ -2,11 +2,12 @@ import cn from 'classnames'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 
+import { Rating } from '..'
+
 import { ReviewProps } from './Review.props'
 import styles from './Review.module.css'
 
 import UserIcon from './user.svg'
-import { Rating } from '..'
 
 export const Review = ({review, className, ...props}: ReviewProps): JSX.Element => {
 	const { name, title, description, createdAt, rating} = review
