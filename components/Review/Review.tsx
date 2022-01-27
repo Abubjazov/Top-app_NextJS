@@ -15,22 +15,22 @@ export const Review = ({review, className, ...props}: ReviewProps): JSX.Element 
 		<div className={cn(styles.review, className)}
 			{...props}
 		>
-			<UserIcon className={styles.reviewUser}/>
+			<UserIcon className={styles.user}/>
 
-			<div>
-				<span className={styles.reviewUserName}>{name}</span>
-				<span className={styles.reviewTitle}>{title}</span>
+			<div className={styles.title}>
+				<span className={styles.userName}>{name}:</span>&nbsp;&nbsp;
+				<span>{title}</span>
 			</div>
 
-			<div className={styles.reviewDate}>
+			<div className={styles.date}>
 				{format(new Date(createdAt), 'dd MMMM yyyy', { locale: ru })}
 			</div>
 
-			<div className={styles.reviewRating}>
+			<div className={styles.rating}>
 				<Rating rating={rating}/>
 			</div>
 
-			<div className={styles.reviewDesc}>
+			<div className={styles.description}>
 				{description}
 			</div>
 		</div>

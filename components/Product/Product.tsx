@@ -85,7 +85,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 						appearance={'ghost'} 
 						arrow={reviewOpened ? 'down': 'right'} 
 						className={styles.reviewBtn}
-						onClick={() => setReviewOpened(!reviewOpened)}
+						onClick={product.reviewCount > 0 ? () => setReviewOpened(!reviewOpened): () => setReviewOpened(false)}
 					>Читать отзывы</Button>
 				</div>
 			</Card>
