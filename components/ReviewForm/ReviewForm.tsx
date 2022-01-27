@@ -13,7 +13,7 @@ import CrossIcon from './cross.svg'
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
 	const { register, control, handleSubmit } = useForm<IReviewForm>()
 
-	const onSubmit: SubmitHandler<IReviewForm> = data => console.log(data);
+	const onSubmit: SubmitHandler<IReviewForm> = data => console.log(data)
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
