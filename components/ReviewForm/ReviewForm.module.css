@@ -28,11 +28,18 @@
   margin-left: 15px;
 }
 
-.success {
+.successPannel {
   margin-top: 10px;
-  background: var(--green-light);
   padding: 10px;
   position: relative;
+}
+
+.success {
+  background: var(--green-light);
+}
+
+.error {
+  background: var(--red-light);
 }
 
 .successTitle {
@@ -40,11 +47,15 @@
   margin-bottom: 10px;
 }
 
-.successCross {
+.cross {
   position: absolute;
   top: 15px;
   right: 15px;
   cursor: pointer;
+}
+
+.error .cross path {
+  stroke: var(--red);
 }
 
 @media screen and (max-width: 1160px) {

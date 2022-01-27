@@ -1,19 +1,40 @@
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import cn from 'classnames'
+import axios from 'axios'
 
 import { Button, Input, Rating, Textarea } from '..'
+import { API } from '../../helpers/api'
 
-import { IReviewForm } from '../../interfaces/review.interface'
+import { IReviewForm, IReviewSentResponse } from '../../interfaces/review.interface'
 import { ReviewFormProps } from './ReviewForm.props'
 import styles from './ReviewForm.module.css'
 
 import CrossIcon from './cross.svg'
+import { useState } from 'react'
 
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
-	const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>()
+	const [successSend, setSuccessSend ] = useState<boolean>(false)
+	const [errorSend, setErrorSend ] = useState<string>('')
+	const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>()
 
-	const onSubmit: SubmitHandler<IReviewForm> = data => console.log(data)
+	const onSubmit: SubmitHandler<IReviewForm> = async (formData: IReviewForm) => {
+		try {
+			const { data } = await axios.post<IReviewSentResponse>(API.review.createDemo, {
+				...formData, 
+				productId
+			})
+
+			if (data.message) {
+				setSuccessSend(true)
+				reset()
+			} else {
+				setErrorSend(API.messages.errorMsg)
+			} 
+		} catch {
+			setErrorSend(API.messages.errorMsg) 
+		}
+	}
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
@@ -62,13 +83,21 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 				</div>
 			</div>
 
-			<div className={styles.success}>
+			{successSend && <div className={cn( styles.successPannel, styles.success )}>
 				<div className={styles.successTitle}>Ваш отзыв отправлен</div>
 				<div>
 					Спасибо, ваш отзыв будет опубликован после премодерации.
 				</div>
-				<CrossIcon className={styles.successCross}/>
-			</div>
+				<CrossIcon className={styles.cross} onClick={() => setSuccessSend(false)}/>
+			</div>}
+
+			{errorSend && <div className={cn(styles.error, styles.successPannel)}>
+				<div className={styles.successTitle}>Ваш отзыв НЕ отправлен</div>
+				<div>
+					{API.messages.errorMsg}
+				</div>
+				<CrossIcon className={styles.cross} onClick={() => setErrorSend('')}/>
+			</div>}
 		</form>	
 	)
 }
