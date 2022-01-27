@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { nanoid } from 'nanoid'
 import cn from 'classnames'
@@ -85,7 +85,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 						appearance={'ghost'} 
 						arrow={reviewOpened ? 'down': 'right'} 
 						className={styles.reviewBtn}
-						onClick={product.reviewCount > 0 ? () => setReviewOpened(!reviewOpened): () => setReviewOpened(false)}
+						onClick={() => setReviewOpened(!reviewOpened)}
 					>Читать отзывы</Button>
 				</div>
 			</Card>
@@ -95,7 +95,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				[styles.closed]: !reviewOpened,
 			})}>
 				{product.reviews && product.reviews.map(review => (
-					<Review key={nanoid()} review={review}/>
+					<React.Fragment key={nanoid()}>
+						<Review review={review}/>
+						<Divider />
+					</React.Fragment>
 				))}
 			</Card>
 		</div>
