@@ -1,6 +1,6 @@
 .product {
   padding: 40px;
-  margin-bottom: 30px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns:
     [start] 70px [logoend] 30px [titlestart] calc(50% - 100px)
@@ -166,7 +166,7 @@
 }
 
 .reviews {
-  margin-top: -30px;
+  /* margin-top: -30px; */
 }
 
 @media screen and (max-width: 1320px) {
