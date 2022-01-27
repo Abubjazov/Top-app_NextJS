@@ -11,7 +11,7 @@ import CrossIcon from './cross.svg'
 
 
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
-	const { register, control, handleSubmit } = useForm<IReviewForm>()
+	const { register, control, handleSubmit, formState: { errors } } = useForm<IReviewForm>()
 
 	const onSubmit: SubmitHandler<IReviewForm> = data => console.log(data)
 
@@ -20,8 +20,16 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 			<div className={cn(styles.reviewForm, className)}
 				{...props}
 			>
-				<Input {...register("name")} placeholder='Имя'/>
-				<Input {...register('title')} placeholder='Заголовок отзыва'/>
+				<Input 
+					{...register("name", {required: {value: true, message: 'Пожалуйста укажите ваше имя'}})}
+					placeholder='Имя'
+					error={errors.name}
+				/>
+				<Input 
+					{...register('title', {required: {value: true, message: 'Пожалуйста укажите заголовок'}})} 
+					placeholder='Заголовок отзыва'
+					error={errors.title}
+				/>
 
 				<div className={styles.rating}>
 					<span>Оценка:</span>
@@ -34,7 +42,12 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 					/>
 				</div>			
 
-				<Textarea {...register('description')} className={styles.description} placeholder='Текст отзыва'/>			
+				<Textarea 
+					{...register('description', {required: {value: true, message: 'Пожалуйста введите текст'}})} 
+					className={styles.description} 
+					placeholder='Текст отзыва'
+					error={errors.description}
+				/>			
 
 				<div className={styles.submit}>
 					<Button appearance={'primary'}>Отправить</Button>
