@@ -1,4 +1,3 @@
-import cn from 'classnames'
 import { nanoid } from 'nanoid'
 
 import styles from './Advantages.module.css'

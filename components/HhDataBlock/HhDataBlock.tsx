@@ -1,4 +1,3 @@
-import cn from 'classnames'
 import { Card } from '..'
 import { priceRu } from '../../helpers/helper'
 

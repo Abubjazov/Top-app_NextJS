@@ -10,10 +10,6 @@ import StarIcon from './star.svg'
 export const Rating = forwardRef(({isEditable = false, rating, setRating, error, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
 
-	useEffect(() => {
-		constructRating(rating)
-	}, [rating])
-
 	const constructRating = (currentRating: number) => {
 		const updatedArray = ratingArray.map((item: JSX.Element, index: number) => {
 			return (
@@ -36,6 +32,10 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 
 		setRatingArray(updatedArray)
 	}
+
+	useEffect(() => {
+		constructRating(rating)
+	}, [rating])
 
 	const changeDisplay = (index: number): void => {
 		if(!isEditable) return
