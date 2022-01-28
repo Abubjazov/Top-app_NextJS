@@ -9,8 +9,6 @@ import { withLayout } from '../HOC/withLayout'
 import { API } from '../helpers/api'
 
 function Home({ menu }: HomeProps): JSX.Element {
-	console.log(menu)
-
 	return (
 		<>
 			<Htag tag='h1'>Заголовок</Htag>			
