@@ -22,7 +22,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 	}
 
 	return (
-		<div className={className} {...props}>
+		<div {...props}>
 			<Card className={styles.product}>
 				<div className={styles.logo}>
 					<Image 
