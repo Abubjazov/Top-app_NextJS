@@ -12,7 +12,6 @@ import styles from './TopPageComponent.module.css'
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating})
-	const y = useScrollY()
 
 	const setSort = (sort: SortEnum): void => {
 		dispatchSort({type: sort})

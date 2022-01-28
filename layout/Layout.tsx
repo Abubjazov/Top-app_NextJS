@@ -4,6 +4,7 @@ import { Footer } from './Footer/Footer'
 
 import { LayoutProps } from './Layout.props'
 import styles from './Layout.module.css'
+import { Up } from '../components'
 
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
 	return (
@@ -14,6 +15,7 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
 				{children}
 			</div>
 			<Footer className={styles.footer}/>
+			<Up />
 		</div>
 	)
 }
