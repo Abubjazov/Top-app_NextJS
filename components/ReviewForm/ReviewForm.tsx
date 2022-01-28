@@ -12,7 +12,6 @@ import styles from './ReviewForm.module.css'
 import CrossIcon from './cross.svg'
 import { useState } from 'react'
 
-
 export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
 	const [successSend, setSuccessSend ] = useState<boolean>(false)
 	const [errorSend, setErrorSend ] = useState<string>('')

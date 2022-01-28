@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Image from 'next/image'
 import { nanoid } from 'nanoid'
 import cn from 'classnames'
@@ -9,12 +9,20 @@ import { declOfNum, priceRu } from '../../helpers/helper'
 import { ProductProps } from './Product.props'
 import styles from './Product.module.css'
 
-
 export const Product = ({ product, className, ...props }: ProductProps): JSX.Element => {
 	const [reviewOpened, setReviewOpened] = useState<boolean>(false)
+	const reviewRef = useRef<HTMLDivElement>(null)
+
+	const scrollToReview = () => {
+		setReviewOpened(true)
+		reviewRef.current?.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
+		})
+	}
 
 	return (
-		<div {...props}>
+		<div className={className} {...props}>
 			<Card className={styles.product}>
 				<div className={styles.logo}>
 					<Image 
@@ -48,7 +56,10 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 				<div className={styles.creditTitle}>в кредит</div>
 				<div 
 					className={styles.ratingTitle}				
-				>{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
+				>
+					<a href='#ref' onClick={scrollToReview}>
+						{product.reviewCount} {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
+					</a>
 				</div>
 
 				<Divider className={styles.hr}/>
@@ -93,7 +104,7 @@ export const Product = ({ product, className, ...props }: ProductProps): JSX.Ele
 			<Card color={'blue'} className={cn(styles.reviews, {
 				[styles.opened]: reviewOpened,
 				[styles.closed]: !reviewOpened,
-			})}>
+			})} ref={reviewRef}>
 				{product.reviews && product.reviews.map(review => (
 					<React.Fragment key={nanoid()}>
 						<Review review={review}/>
