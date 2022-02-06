@@ -4,3 +4,22 @@
   gap: 10px;
   margin: 15px 15px 0 15px;
 }
+
+.mobileMenu {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  padding: 5px;
+  background: #f5f6f8;
+}
+
+.closeMenu {
+  position: fixed;
+  z-index: 20;
+  top: 15px;
+  right: 15px;
+}
