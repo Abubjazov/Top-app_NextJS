@@ -5,7 +5,7 @@ import { useScrollY } from '../../hooks/useScrollY'
 
 
 import styles from './Up.module.css'
-import { IButton } from '../IButton/iButton'
+import { IButton } from '../IButton/IButton'
 
 export const Up = (): JSX.Element => {
 	const control = useAnimation()
