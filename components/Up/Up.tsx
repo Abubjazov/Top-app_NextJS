@@ -3,9 +3,9 @@ import { motion, useAnimation } from 'framer-motion'
 
 import { useScrollY } from '../../hooks/useScrollY'
 
-import styles from './Up.module.css'
 
-import RowIcon from './row.svg'
+import styles from './Up.module.css'
+import { IButton } from '../IButton/iButton'
 
 export const Up = (): JSX.Element => {
 	const control = useAnimation()
@@ -23,13 +23,16 @@ export const Up = (): JSX.Element => {
 	}
 
 	return (
-		<motion.button 
+		<motion.div 
 			className={styles.up} 
-			onClick={scrollToTop}
 			animate={control}
 			initial={{opacity: 0}}
 		>
-			<RowIcon />
-		</motion.button>
+			<IButton
+				appearance='primary' 
+				icon='RowIcon'
+				onClick={scrollToTop}
+			/>
+		</motion.div>
 	)
 }
