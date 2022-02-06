@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { motion } from 'framer-motion'
 
@@ -8,8 +10,6 @@ import { HeaderProps } from './Header.props'
 import styles from './Header.module.css'
 
 import Logo from '../logo.svg' 
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
 
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	const [isOpened, setIsOpened] = useState<boolean>(false)
