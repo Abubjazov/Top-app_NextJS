@@ -10,6 +10,10 @@ import StarIcon from './star.svg'
 export const Rating = forwardRef(({isEditable = false, rating, setRating, error, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
 
+	useEffect(() => {
+		constructRating(rating)
+	}, [rating])
+
 	const constructRating = (currentRating: number) => {
 		const updatedArray = ratingArray.map((item: JSX.Element, index: number) => {
 			return (
@@ -24,7 +28,7 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 				>
 					<StarIcon 
 						tabIndex={isEditable ? 0 : -1}
-						onKeyDown={(e: KeyboardEvent<SVGElement>) => isEditable && spaceDown(index + 1, e) }
+						onKeyDown={handleKey}
 					/>
 				</span>
 			)
@@ -33,12 +37,10 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 		setRatingArray(updatedArray)
 	}
 
-	useEffect(() => {
-		constructRating(rating)
-	}, [rating])
-
 	const changeDisplay = (index: number): void => {
-		if(!isEditable) return
+		if(!isEditable) {
+			return
+		}
 
 		constructRating(index)
 	}
@@ -49,10 +51,24 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 		setRating(index)
 	}
 
-	const spaceDown = (index: number, e: KeyboardEvent<SVGElement>): void => {
-		if(!isEditable || !setRating || e.code !== 'Space') return
+	const handleKey = (e: KeyboardEvent<SVGElement>): void => {
+		if(!isEditable || !setRating) {
+			return
+		}
 
-		setRating(index)
+		if (e.code === 'ArrowRight' || e.code === 'ArrowUp') {
+			if (!rating) {
+				setRating(1)
+			} else {
+				e.preventDefault()
+				setRating(rating < 5 ? rating + 1 : 5)
+			}
+		}
+
+		if (e.code === 'ArrowLeft' || e.code === 'ArrowDown') {
+			e.preventDefault()
+			setRating(rating > 0 ? rating - 1 : 0)
+		}
 	}
 
 	return (
