@@ -25,6 +25,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 			behavior: 'smooth',
 			block: 'start'
 		})
+		reviewRef.current?.focus()
 	}
 
 	return (
@@ -108,7 +109,7 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 			</Card>
 			
 			<motion.div animate={reviewOpened ? 'visible' : 'hidden'} variants={variants} initial={'hidden'}>
-				<Card color={'blue'} className={styles.reviews} ref={reviewRef}>
+				<Card color={'blue'} className={styles.reviews} ref={reviewRef} tabIndex={0}>
 					{product.reviews && product.reviews.map(review => (
 						<React.Fragment key={nanoid()}>
 							<Review review={review}/>
