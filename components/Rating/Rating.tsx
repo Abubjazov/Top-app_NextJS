@@ -1,4 +1,4 @@
-import { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef } from 'react'
+import { useEffect, useState, KeyboardEvent, forwardRef, ForwardedRef, useRef } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
 
@@ -9,10 +9,27 @@ import StarIcon from './star.svg'
 
 export const Rating = forwardRef(({isEditable = false, rating, setRating, error, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
+	const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([]);
 
 	useEffect(() => {
 		constructRating(rating)
 	}, [rating])
+
+	const computeFocus = (r: number, i: number): number => {
+		if (!isEditable) {
+			return -1
+		}
+
+		if (!rating && i == 0) {
+			return 0
+		}
+
+		if (r == i + 1) {
+			return 0
+		}
+
+		return -1
+	}
 
 	const constructRating = (currentRating: number) => {
 		const updatedArray = ratingArray.map((item: JSX.Element, index: number) => {
@@ -25,10 +42,12 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 					onMouseEnter={() => changeDisplay(index + 1)}
 					onMouseLeave={() => changeDisplay(rating)}
 					onClick={() => changeClick(index + 1)}
+					tabIndex={computeFocus(rating, index)}
+					onKeyDown={handleKey}
+					ref={ref => ratingArrayRef.current?.push(ref)}
 				>
 					<StarIcon 
-						tabIndex={isEditable ? 0 : -1}
-						onKeyDown={handleKey}
+						
 					/>
 				</span>
 			)
@@ -51,7 +70,7 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 		setRating(index)
 	}
 
-	const handleKey = (e: KeyboardEvent<SVGElement>): void => {
+	const handleKey = (e: KeyboardEvent): void => {
 		if(!isEditable || !setRating) {
 			return
 		}
