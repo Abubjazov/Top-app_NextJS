@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { useState } from 'react'
+import { useState, KeyboardEvent, useRef } from 'react'
 
 import { Header } from './Header/Header'
 import { Sidebar } from './Sidebar/Sidebar'
@@ -11,6 +11,16 @@ import styles from './Layout.module.css'
 
 export const Layout = ({ children }: LayoutProps): JSX.Element => {
 	const [isSkipLinkDisp, setIsSkipLinkDisp] = useState<boolean>(false)
+	const bodyRef = useRef<HTMLDivElement>(null)
+
+	const skipContentAction = (key: KeyboardEvent): void => {
+		if (key.code === 'Enter' || key.code === 'Space') {
+			key.preventDefault()
+			bodyRef.current?.focus()
+		}
+
+		setIsSkipLinkDisp(false)
+	}
 
 	return (
 		<div className={styles.wrapper}>
@@ -20,13 +30,14 @@ export const Layout = ({ children }: LayoutProps): JSX.Element => {
 				className={cn(styles.skipLink, {
 					[styles.displayed]: isSkipLinkDisp
 				})}
+				onKeyDown={skipContentAction}
 			>
 				Сразу к содержанию
 			</a>
 
 			<Header className={styles.header}/>
 			<Sidebar className={styles.sidebar} />
-			<div className={styles.body}>
+			<div className={styles.body} ref={bodyRef} tabIndex={0}>
 				{children}
 			</div>
 			<Footer className={styles.footer}/>
