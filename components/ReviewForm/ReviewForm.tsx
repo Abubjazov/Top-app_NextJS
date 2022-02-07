@@ -12,7 +12,7 @@ import styles from './ReviewForm.module.css'
 import CrossIcon from './cross.svg'
 import { useState } from 'react'
 
-export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps): JSX.Element => {
+export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewFormProps): JSX.Element => {
 	const [successSend, setSuccessSend ] = useState<boolean>(false)
 	const [errorSend, setErrorSend ] = useState<string>('')
 	const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>()
@@ -44,11 +44,13 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 					{...register("name", {required: {value: true, message: 'Пожалуйста укажите ваше имя'}})}
 					placeholder='Имя'
 					error={errors.name}
+					tabIndex={isOpened ? 0: -1}
 				/>
 				<Input 
 					{...register('title', {required: {value: true, message: 'Пожалуйста укажите заголовок'}})} 
 					placeholder='Заголовок отзыва'
 					error={errors.title}
+					tabIndex={isOpened ? 0: -1}
 				/>
 
 				<div className={styles.rating}>
@@ -64,6 +66,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 								ref={field.ref} 
 								setRating={field.onChange} 
 								error={errors.rating}
+								tabIndex={isOpened ? 0: -1}
 							/>
 						)}
 					/>
@@ -74,6 +77,7 @@ export const ReviewForm = ({ productId, className, ...props }: ReviewFormProps):
 					className={styles.description} 
 					placeholder='Текст отзыва'
 					error={errors.description}
+					tabIndex={isOpened ? 0: -1}
 				/>			
 
 				<div className={styles.submit}>

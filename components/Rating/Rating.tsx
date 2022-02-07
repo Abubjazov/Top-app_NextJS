@@ -7,7 +7,7 @@ import styles from './Rating.module.css'
 
 import StarIcon from './star.svg'
 
-export const Rating = forwardRef(({isEditable = false, rating, setRating, error, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
+export const Rating = forwardRef(({isEditable = false, rating, setRating, error, tabIndex, ...props}: RatingProps, ref: ForwardedRef<HTMLDivElement>): JSX.Element => {
 	const [ratingArray, setRatingArray] = useState<JSX.Element[]>(new Array(5).fill(<></>))
 	const ratingArrayRef = useRef<(HTMLSpanElement | null)[]>([]);
 
@@ -21,11 +21,11 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 		}
 
 		if (!rating && i == 0) {
-			return 0
+			return tabIndex ?? 0
 		}
 
 		if (r == i + 1) {
-			return 0
+			return tabIndex ?? 0
 		}
 
 		return -1
