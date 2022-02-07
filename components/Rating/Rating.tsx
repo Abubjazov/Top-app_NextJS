@@ -82,11 +82,14 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 				e.preventDefault()
 				setRating(rating < 5 ? rating + 1 : 5)
 			}
+
+			ratingArrayRef.current[rating]?.focus()
 		}
 
 		if (e.code === 'ArrowLeft' || e.code === 'ArrowDown') {
 			e.preventDefault()
 			setRating(rating > 0 ? rating - 1 : 0)
+			ratingArrayRef.current[rating - 2]?.focus()
 		}
 	}
 
