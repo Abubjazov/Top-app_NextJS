@@ -43,15 +43,25 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 				<div className={styles.title}>{product.title}</div>
 
 				<div className={styles.price}>
-					{priceRu(product.price)}
-					{product.oldPrice && <Tag className={styles.oldPrice} color={'green'}>{priceRu(product.price - product.oldPrice)}</Tag>}
+					<span>
+						<span className='visualyHidden'>Цена</span>
+						{priceRu(product.price)}
+					</span>
+					
+					{product.oldPrice && <Tag className={styles.oldPrice} color={'green'}>
+							<span className='visualyHidden'>Скидка</span>
+							{priceRu(product.price - product.oldPrice)}
+						</Tag>
+					}					
 				</div>
 
 				<div className={styles.credit}>
+				<span className='visualyHidden'>Кредит</span>
 					{priceRu(product.credit)}/<span>мес</span>
 				</div>
 
 				<div className={styles.rating}>
+					<span className='visualyHidden'>{'Рейтинг курса ' + (product.reviewAvg ?? product.initialRating)}</span>
 					<Rating rating={product.reviewAvg ?? product.initialRating}/>
 				</div>
 
@@ -59,8 +69,8 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 					{product.categories.map(category => <Tag className={styles.category} key={nanoid()} color={'ghost'}>{category}</Tag>)}
 				</div>
 
-				<div className={styles.priceTitle}>цена</div>
-				<div className={styles.creditTitle}>в кредит</div>
+				<div className={styles.priceTitle} area-hidden={true}>цена</div>
+				<div className={styles.creditTitle} area-hidden={true}>в кредит</div>
 				<div 
 					className={styles.ratingTitle}				
 				>
