@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { useState } from 'react'
+import { KeyboardEvent, useState } from 'react'
 
 import { Button, Input } from '..'
 
@@ -22,21 +22,23 @@ export const Search = ({className, ...props}: SearchProps): JSX.Element => {
 		})
 	}
 
-	// const handleKeyDown = (event): void => {
-	// 	event.key === 'Enter' ? goToSearch() : null
-	// }
+	const handleKeyDown = (e: KeyboardEvent): void => {
+		e.code === 'Enter' ? goToSearch() : null
+	}
 
 	return (
 		<div className={cn(className, styles.search)} {...props}>
 			<Input 
+				aria-label='Строка поиска'
 				className={styles.input}
 				placeholder='Поиск...'
 				value={search}
 				onChange={e => setSearch(e.target.value)}
-				// onKeyDown={handleKeyDown}
+				onKeyDown={handleKeyDown}
 			/>
 
 			<Button
+				aria-label='Запустить поиск'
 				appearance='primary'
 				className={styles.button}
 				onClick={goToSearch}

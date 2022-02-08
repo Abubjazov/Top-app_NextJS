@@ -5,7 +5,6 @@ import { SortEnum } from '../../components/Sort/Sort.props'
 import { useEffect, useReducer } from 'react'
 import { sortReducer } from '../../components/Sort/sort.reducer'
 import { Advantages, HhDataBlock, Htag, Product, Sort, Tag } from '../../components'
-import { useScrollY } from '../../hooks/useScrollY'
 
 import { TopPageComponentProps } from './TopPageComponent.props'
 import styles from './TopPageComponent.module.css'
@@ -25,7 +24,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 		<div className={styles.wrapper}>
 			<div className={styles.title}>
 				<Htag tag='h1'>{page.title}</Htag>
-				{products && <Tag color='grey' size='m'>{products.length}</Tag>}
+				{products && <Tag color='grey' size='m' aria-label={'всего курсов найдено ' + products.length}>{products.length}</Tag>}
 				<Sort sort={sort} setSort={setSort} />
 			</div>
 
