@@ -1,8 +1,9 @@
+import { useEffect, useReducer } from 'react'
+import { useReducedMotion } from 'framer-motion'
 import { nanoid } from 'nanoid'
 
 import { TopLevelCategory } from '../../interfaces/page.interface'
 import { SortEnum } from '../../components/Sort/Sort.props'
-import { useEffect, useReducer } from 'react'
 import { sortReducer } from '../../components/Sort/sort.reducer'
 import { Advantages, HhDataBlock, Htag, Product, Sort, Tag } from '../../components'
 
@@ -11,6 +12,7 @@ import styles from './TopPageComponent.module.css'
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispatchSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating})
+	const shouldReduceMotion = useReducedMotion()
 
 	const setSort = (sort: SortEnum): void => {
 		dispatchSort({type: sort})
@@ -29,7 +31,7 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 			</div>
 
 			<div role={'list'}>
-				{sortedProducts && sortedProducts.map(product => (<Product role={'listitem'} layout key={nanoid()} product={product} />))}
+				{sortedProducts && sortedProducts.map(product => (<Product role={'listitem'} layout={shouldReduceMotion ? false : true} key={nanoid()} product={product} />))}
 			</div>
 
 			<div className={styles.hhTitle}>

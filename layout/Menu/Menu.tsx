@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useContext, KeyboardEvent, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 import { AppContext } from '../../context/app.context'
 import { FirstLevelMenuItem, PageItem } from '../../interfaces/menu.interface'
@@ -13,13 +13,14 @@ import styles from './Menu.module.css'
 
 export const Menu = (): JSX.Element => {
 	const {menu, setMenu, firstCategory} = useContext(AppContext)
+	const shouldReduceMotion = useReducedMotion()
 	const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>()
 	const router = useRouter()
 
 	const variants = {
 		visible: {
 			marginBottom: 20,
-			transition: {
+			transition: shouldReduceMotion ? {} : {
 				when: 'beforeChildren',
 				staggerChildren: 0.1
 			}
@@ -33,7 +34,7 @@ export const Menu = (): JSX.Element => {
 			height: 29
 		},
 		hidden: { 
-			opacity: 0,
+			opacity: shouldReduceMotion ? 1 : 0,
 			height: 0
 		}
 	}
