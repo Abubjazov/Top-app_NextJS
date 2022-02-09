@@ -56,9 +56,9 @@ export const Menu = (): JSX.Element => {
 
 	const buildFirsLevel = (): JSX.Element => {
 		return (
-			<>
+			<ul>
 				{firstLevelMenu.map(firstLevelMenuItem => (
-					<div key={nanoid()}>
+					<li key={nanoid()} aria-expended={firstLevelMenuItem.id == firstCategory}>
 						<Link href={`/${firstLevelMenuItem.route}`}>
 							<a>
 								<div className={ cn(styles.firstLevel, {
@@ -70,15 +70,15 @@ export const Menu = (): JSX.Element => {
 							</a>
 						</Link>
 						{firstLevelMenuItem.id == firstCategory && buildSecondLevel(firstLevelMenuItem)}
-					</div>
+					</li>
 				))}
-			</>
+			</ul>
 		)
 	}
 
 	const buildSecondLevel = (menuItem: FirstLevelMenuItem): JSX.Element => {
 		return (
-			<div className={styles.secondBlock}>
+			<ul className={styles.secondBlock}>
 				{
 					menu.map(secondLevelMenuItem => {
 						if (secondLevelMenuItem.pages.map(p => p.alias).includes(router.asPath.split('/')[2])) {
@@ -86,13 +86,13 @@ export const Menu = (): JSX.Element => {
 						}
 
 						return (
-							<div key={nanoid()}>
-								<div 
-									tabIndex={0}
+							<li key={nanoid()}>
+								<button 
 									onKeyDown={(key: KeyboardEvent ) => openSecondLevelKey(key, secondLevelMenuItem._id.secondCategory)}
 									className={styles.secondLevel} 
 									onClick={() => openSecondLevel(secondLevelMenuItem._id.secondCategory)}
-								>{secondLevelMenuItem._id.secondCategory}</div>
+									aria-expended={secondLevelMenuItem.isOpened}
+								>{secondLevelMenuItem._id.secondCategory}</button>
 									
 								<motion.div 
 									className={styles.secondLevelBlock}
@@ -103,33 +103,29 @@ export const Menu = (): JSX.Element => {
 								>
 									{buildThirdLevel(secondLevelMenuItem.pages, menuItem.route, secondLevelMenuItem.isOpened = false)}
 								</motion.div>			
-							</div>
+							</li>
 						)
 					})
 				}
-			</div>
+			</ul>
 		)
 	}
 
-	const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean): JSX.Element => {
-		return (
-			<>
-				{
-					pages.map(page => (
-						<motion.div key={nanoid()} variants={variantsChildren}>
-							<Link href={`/${route}/${page.alias}`}>
-								<a 
-								tabIndex={isOpened ? 0 : -1}
-								className={cn(styles.thirdLevel, {
-									[styles.thirdLevelActive]: `/${route}/${page.alias}` == router.asPath
-								})}>
-									{page.category}
-								</a>
-							</Link>
-						</motion.div>
-					))
-				}
-			</>
+	const buildThirdLevel = (pages: PageItem[], route: string, isOpened: boolean): JSX.Element[] => {
+		return (			
+			pages.map(page => (
+				<motion.li key={nanoid()} variants={variantsChildren}>
+					<Link href={`/${route}/${page.alias}`}>
+						<a 
+						tabIndex={isOpened ? 0 : -1}
+						className={cn(styles.thirdLevel, {
+							[styles.thirdLevelActive]: `/${route}/${page.alias}` == router.asPath
+						})}>
+							{page.category}
+						</a>
+					</Link>
+				</motion.li>
+			))
 		)
 	}
 
