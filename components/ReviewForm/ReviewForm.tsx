@@ -15,7 +15,7 @@ import { useState } from 'react'
 export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewFormProps): JSX.Element => {
 	const [successSend, setSuccessSend ] = useState<boolean>(false)
 	const [errorSend, setErrorSend ] = useState<string>('')
-	const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>()
+	const { register, control, handleSubmit, formState: { errors }, reset, clearErrors } = useForm<IReviewForm>()
 
 	const onSubmit: SubmitHandler<IReviewForm> = async (formData: IReviewForm) => {
 		try {
@@ -85,7 +85,7 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 				/>			
 
 				<div className={styles.submit}>
-					<Button tabIndex={isOpened ? 0: -1} appearance={'primary'}>Отправить</Button>
+					<Button tabIndex={isOpened ? 0: -1} appearance={'primary'} onClick={() => clearErrors()}>Отправить</Button>
 					<span className={styles.info}>
 						* Перед публикацией отзыв пройдет предварительную модерацию и проверку
 					</span>

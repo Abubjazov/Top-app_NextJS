@@ -52,9 +52,7 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 					aria-label={isEditable ? 'Укажите вашу оценку' : 'рейтинг курса ' + rating}
 					aria-valuemax={5}
 				>
-					<StarIcon 
-						
-					/>
+					<StarIcon />
 				</span>
 			)
 		})
@@ -104,7 +102,7 @@ export const Rating = forwardRef(({isEditable = false, rating, setRating, error,
 			[styles.error]: error
 		})} >
 			{ratingArray.map(rating => (<span key={nanoid()}>{rating}</span>))}
-			{error && <span className={styles.errorMsg}>{error.message}</span>}
+			{error && <span role='alert' className={styles.errorMsg}>{error.message}</span>}
 		</div>
 	)
 })
