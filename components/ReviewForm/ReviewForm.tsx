@@ -82,7 +82,9 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 
 				<div className={styles.submit}>
 					<Button tabIndex={isOpened ? 0: -1} appearance={'primary'}>Отправить</Button>
-					<span className={styles.info}>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
+					<span className={styles.info}>
+						* Перед публикацией отзыв пройдет предварительную модерацию и проверку
+					</span>
 				</div>
 			</div>
 
@@ -95,7 +97,10 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 			</div>}
 
 			{errorSend && <div className={cn(styles.error, styles.successPannel)}>
-				<div className={styles.successTitle}>Ваш отзыв НЕ отправлен</div>
+				<div className={styles.successTitle}>
+					Извините произошла ошибка. Ваш отзыв НЕ отправлен. Перезагрузите страницу и попробуйте ещё раз.
+				</div>
+
 				<div>
 					{API.messages.errorMsg}
 				</div>
