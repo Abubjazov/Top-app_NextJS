@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import Link from 'next/link'
-import { useContext, KeyboardEvent } from 'react'
+import { useContext, KeyboardEvent, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
@@ -13,6 +13,7 @@ import styles from './Menu.module.css'
 
 export const Menu = (): JSX.Element => {
 	const {menu, setMenu, firstCategory} = useContext(AppContext)
+	const [announce, setAnnounce] = useState<'closed' | 'opened' | undefined>()
 	const router = useRouter()
 
 	const variants = {
@@ -40,6 +41,7 @@ export const Menu = (): JSX.Element => {
 	const openSecondLevel = (secondCategory: string) => {
 		setMenu && setMenu(menu.map(m => {
 			if (m._id.secondCategory == secondCategory) {
+				setAnnounce(m.isOpened ? 'closed' : 'opened')
 				m.isOpened = !m.isOpened
 			}
 
@@ -56,7 +58,7 @@ export const Menu = (): JSX.Element => {
 
 	const buildFirsLevel = (): JSX.Element => {
 		return (
-			<ul>
+			<ul className={styles.firstLevelList} >
 				{firstLevelMenu.map(firstLevelMenuItem => (
 					<li key={nanoid()} aria-expended={firstLevelMenuItem.id == firstCategory}>
 						<Link href={`/${firstLevelMenuItem.route}`}>
@@ -92,9 +94,11 @@ export const Menu = (): JSX.Element => {
 									className={styles.secondLevel} 
 									onClick={() => openSecondLevel(secondLevelMenuItem._id.secondCategory)}
 									aria-expended={secondLevelMenuItem.isOpened}
-								>{secondLevelMenuItem._id.secondCategory}</button>
+								>
+									{secondLevelMenuItem._id.secondCategory}
+								</button>
 									
-								<motion.div 
+								<motion.ul 
 									className={styles.secondLevelBlock}
 									layout
 									variants={variants}
@@ -102,7 +106,7 @@ export const Menu = (): JSX.Element => {
 									animate={secondLevelMenuItem.isOpened ? 'visible' : 'hidden'}
 								>
 									{buildThirdLevel(secondLevelMenuItem.pages, menuItem.route, secondLevelMenuItem.isOpened = false)}
-								</motion.div>			
+								</motion.ul>			
 							</li>
 						)
 					})
@@ -117,10 +121,12 @@ export const Menu = (): JSX.Element => {
 				<motion.li key={nanoid()} variants={variantsChildren}>
 					<Link href={`/${route}/${page.alias}`}>
 						<a 
-						tabIndex={isOpened ? 0 : -1}
-						className={cn(styles.thirdLevel, {
-							[styles.thirdLevelActive]: `/${route}/${page.alias}` == router.asPath
-						})}>
+							tabIndex={isOpened ? 0 : -1}
+							className={cn(styles.thirdLevel, {
+								[styles.thirdLevelActive]: `/${route}/${page.alias}` == router.asPath
+							})}
+							aria-current={`/${route}/${page.alias}` == router.asPath ? 'page' : false}
+						>
 							{page.category}
 						</a>
 					</Link>
@@ -131,9 +137,8 @@ export const Menu = (): JSX.Element => {
 
 	return (
 		<nav className={styles.menu} role='navigation'>
-			<ul>
-				{buildFirsLevel()}
-			</ul>
+			{announce && <span className='visualyHidden' role={'log'}>{announce === 'opened' ? 'развёрнуто' : 'cвёрнуто'}</span>}
+			{buildFirsLevel()}
 		</nav>
 	)
 }
