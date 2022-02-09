@@ -92,15 +92,22 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 				</div>
 			</div>
 
-			{successSend && <div className={cn( styles.successPannel, styles.success )}>
+			{successSend && <div className={cn( styles.successPannel, styles.success )} role='alert'>
 				<div className={styles.successTitle}>Ваш отзыв отправлен</div>
 				<div>
 					Спасибо, ваш отзыв будет опубликован после премодерации.
 				</div>
-				<CrossIcon className={styles.cross} onClick={() => setSuccessSend(false)}/>
+				
+				<button 
+					className={styles.cross} 
+					onClick={() => setSuccessSend(false)}
+					aria-label='Закрыть оповещение'
+				>
+					<CrossIcon />
+				</button>
 			</div>}
 
-			{errorSend && <div className={cn(styles.error, styles.successPannel)}>
+			{errorSend && <div className={cn(styles.error, styles.successPannel)} role='alert'>
 				<div className={styles.successTitle}>
 					Извините произошла ошибка. Ваш отзыв НЕ отправлен. Перезагрузите страницу и попробуйте ещё раз.
 				</div>
@@ -108,7 +115,14 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 				<div>
 					{API.messages.errorMsg}
 				</div>
-				<CrossIcon className={styles.cross} onClick={() => setErrorSend('')}/>
+
+				<button 
+					className={styles.cross} 
+					onClick={() => setErrorSend('')}
+					aria-label='Закрыть оповещение'
+				>
+					<CrossIcon />
+				</button>
 			</div>}
 		</form>	
 	)
