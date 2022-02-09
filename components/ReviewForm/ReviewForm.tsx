@@ -45,12 +45,14 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 					placeholder='Имя'
 					error={errors.name}
 					tabIndex={isOpened ? 0: -1}
+					aria-invalid={errors.name ? true : false}
 				/>
 				<Input 
 					{...register('title', {required: {value: true, message: 'Пожалуйста укажите заголовок'}})} 
 					placeholder='Заголовок отзыва'
 					error={errors.title}
 					tabIndex={isOpened ? 0: -1}
+					aria-invalid={errors.title ? true : false}
 				/>
 
 				<div className={styles.rating}>
@@ -78,6 +80,8 @@ export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewF
 					placeholder='Текст отзыва'
 					error={errors.description}
 					tabIndex={isOpened ? 0: -1}
+					aria-label='Введите текст отзыва'
+					aria-invalid={errors.description ? true : false}
 				/>			
 
 				<div className={styles.submit}>
