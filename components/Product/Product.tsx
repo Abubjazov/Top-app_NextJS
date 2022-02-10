@@ -21,10 +21,12 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 
 	const scrollToReview = () => {
 		setReviewOpened(true)
+
 		reviewRef.current?.scrollIntoView({
 			behavior: 'smooth',
 			block: 'start'
 		})
+		
 		reviewRef.current?.focus()
 	}
 
