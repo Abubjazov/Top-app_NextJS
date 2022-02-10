@@ -32,6 +32,7 @@ export const Up = (): JSX.Element => {
 				appearance='primary' 
 				icon='RowIcon'
 				onClick={scrollToTop}
+				aria-label='Наверх'
 			/>
 		</motion.div>
 	)
