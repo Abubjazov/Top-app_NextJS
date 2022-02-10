@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next'
 import React from 'react'
 import axios from 'axios'
-import Error from 'next/error'
 
 import { Htag } from '../components'
 
@@ -20,7 +19,7 @@ function Home(): JSX.Element {
 export default withLayout(Home)
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-	const firstCategory = 1
+	const firstCategory = 0
 	const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
 		firstCategory
 	})

@@ -31,7 +31,7 @@ export interface TopPageModel {
 	seoText?: string
 	tagsTitle: string
 	metaTitle?: string
-	metaDescription: string
+	metaDescription?: string
 	firstCategory: TopLevelCategory
 	advantages?: TopPageAdvantage[]
 	createdAt: Date

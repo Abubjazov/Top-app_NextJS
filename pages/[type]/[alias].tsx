@@ -71,7 +71,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 			firstCategory: firstCategoryItem.id
 		})
 
-		if (menu.length === 0) {
+		if (menu.length == 0) {
 			return {
 				notFound: true
 			}
@@ -86,10 +86,10 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async ({ params }: G
 
 		return {
 			props: {
-			menu,
-			firstCategory: firstCategoryItem.id,
-			page,
-			products
+				menu,
+				firstCategory: firstCategoryItem.id,
+				page,
+				products
 			}
 		}
 		
