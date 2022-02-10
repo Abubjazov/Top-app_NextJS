@@ -13,7 +13,13 @@ export const firstLevelMenu: FirstLevelMenuItem[] = [
 	{route: 'products', name: 'Товары', icon: <GoodsIcon />, id: TopLevelCategory.Products},
 ]
 
-export const priceRu = (price: number): string => price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ₽')
+export const priceRu = (price: number): string => {
+		if (price) {
+			return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ').concat(' ₽')
+		}
+
+		return '-'
+}
 
 export const declOfNum = (number: number, titles: [string, string, string]): string => {
 	const cases = [2, 0, 1, 1, 1, 2]
