@@ -1,90 +1,99 @@
 .hh {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  gap: 30px;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	gap: 30px;
 }
 
 .count {
-  padding: 20px;
-  text-align: center;
+	padding: 20px;
+
+	text-align: center;
 }
 
 .salary {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  padding: 20px;
-  text-align: center;
-  gap: 20px 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	padding: 20px;
+
+	text-align: center;
+	gap: 20px 0;
 }
 
 .salary > div {
-  border-right: 1px solid var(--gray-light);
+	border-right: 1px solid var(--gray-light);
 }
 
 .salary > div:last-child {
-  border-right: none;
+	border-right: none;
 }
 
 .title {
-  margin-bottom: 10px;
-  font-weight: 300;
-  font-size: 20px;
-  line-height: 27px;
-  text-align: center;
+	margin-bottom: 10px;
 
-  color: #3b434e;
+	text-align: center;
+
+	color: #3B434E;
+
+	font-size: 20px;
+	font-weight: 300;
+	line-height: 27px;
 }
 
 .countValue {
-  font-size: 36px;
-  line-height: 49px;
-  text-align: center;
-  font-weight: 700;
+	text-align: center;
 
-  color: var(--primary);
+	color: var(--primary);
+
+	font-size: 36px;
+	font-weight: 700;
+	line-height: 49px;
 }
 
 .salaryValue {
-  font-weight: 700;
-  font-size: 26px;
-  line-height: 35px;
-  text-align: center;
+	text-align: center;
 
-  color: var(--black);
+	color: var(--black);
+
+	font-size: 26px;
+	font-weight: 700;
+	line-height: 35px;
 }
 
 .rate {
-  margin-bottom: 15px;
-  display: grid;
-  grid-template-columns: repeat(3, 20px);
-  gap: 10px;
-  justify-content: center;
+	display: grid;
+	justify-content: center;
+
+	margin-bottom: 15px;
+	grid-template-columns: repeat(3, 20px);
+	gap: 10px;
 }
 
 .filled circle {
-  fill: var(--orange);
+	fill: var(--orange);
 }
 
 @media screen and (max-width: 1200px) {
-  .hh {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
+	.hh {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 30px;
+	}
 }
 
 @media screen and (max-width: 640px) {
-  .salary {
-    grid-template-columns: 1fr;
-  }
+	.salary {
+		grid-template-columns: 1fr;
+	}
 
-  .salary > div {
-    border-right: none;
-    border-bottom: 1px solid var(--gray-light);
-    padding-bottom: 20px;
-  }
+	.salary > div {
+		padding-bottom: 20px;
 
-  .salary > div:last-child {
-    border-bottom: none;
-  }
+		border-right: none;
+		border-bottom: 1px solid var(--gray-light);
+	}
+
+	.salary > div:last-child {
+		border-bottom: none;
+	}
 }

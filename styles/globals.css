@@ -1,45 +1,48 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
-  color: var(--black);
-  background: #f5f4f4;
+	margin: 0;
+	padding: 0;
 
-  font-family: var(--font-family);
+	color: var(--black);
+	background: #F5F4F4;
+
+	font-family: var(--font-family);
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 
-  color: inherit;
+	color: inherit;
 }
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 .visualyHidden {
-  width: 0;
-  height: 0;
-  overflow: hidden;
-  position: absolute;
+	position: absolute;
+
+	overflow: hidden;
+
+	width: 0;
+	height: 0;
 }
 
 :root {
-  --black: #3b434e;
-  --white: #fff;
-  --gray: #b3c0d9;
-  --gray-light: #ebebeb;
-  --gray-dark: #6b6f76;
-  --primary: #7250f3;
-  --primary-hover: #6344df;
-  --orange: #fc836d;
-  --green: #127a4f;
-  --green-light: #c8f8e4;
-  --red: #de0000;
-  --red-light: #f8a5a5;
-  --gold: #dcb44e;
-  --main-bg: #e5e5e5;
-  --feedback-bg: #f9f8ff;
-  --font-family: 'Noto Sans Display', sans-serif;
+	--black: #3B434E;
+	--white: #FFF;
+	--gray: #B3C0D9;
+	--gray-light: #EBEBEB;
+	--gray-dark: #6B6F76;
+	--primary: #7250F3;
+	--primary-hover: #6344DF;
+	--orange: #FC836D;
+	--green: #127A4F;
+	--green-light: #C8F8E4;
+	--red: #DE0000;
+	--red-light: #F8A5A5;
+	--gold: #DCB44E;
+	--main-bg: #E5E5E5;
+	--feedback-bg: #F9F8FF;
+	--font-family: "Noto Sans Display", sans-serif;
 }

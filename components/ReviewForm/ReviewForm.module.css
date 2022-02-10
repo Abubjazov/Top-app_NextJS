@@ -1,81 +1,87 @@
 .reviewForm {
-  display: grid;
-  grid-template-columns: [start] auto auto 1fr [ratingstart] auto [end];
-  gap: 20px 30px;
+	display: grid;
+	grid-template-columns: [start] auto auto 1fr [ratingstart] auto [end];
+	gap: 20px 30px;
 
-  font-size: 14px;
-  line-height: 14px;
+	font-size: 14px;
+	line-height: 14px;
 }
 
 .rating {
-  grid-column: ratingstart / end;
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 20px;
-  align-items: center;
+	grid-column: ratingstart / end;
+
+	display: grid;
+	grid-template-columns: auto auto;
+	gap: 20px;
+
+	align-items: center;
 }
 
 .description {
-  height: 76px;
-  grid-column: start / end;
+	height: 76px;
+	grid-column: start / end;
 }
 
 .submit {
-  grid-column: start / end;
+	grid-column: start / end;
 }
 
 .info {
-  margin-left: 15px;
+	margin-left: 15px;
 }
 
 .successPannel {
-  margin-top: 10px;
-  padding: 10px;
-  position: relative;
+	position: relative;
+
+	margin-top: 10px;
+	padding: 10px;
 }
 
 .success {
-  background: var(--green-light);
+	background: var(--green-light);
 }
 
 .error {
-  background: var(--red-light);
+	background: var(--red-light);
 }
 
 .successTitle {
-  font-weight: 700;
-  margin-bottom: 10px;
+	margin-bottom: 10px;
+
+	font-weight: 700;
 }
 
 .cross {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  border: none;
-  background: none;
+	position: absolute;
+	top: 15px;
+	right: 15px;
+
+	border: none;
+	background: none;
 }
 
 .error .cross path {
-  stroke: var(--red);
+	stroke: var(--red);
 }
 
 @media screen and (max-width: 1160px) {
-  .reviewForm {
-    grid-template-columns: [start] 1fr [ratingend] 1fr [end];
-  }
-  .rating {
-    grid-column: start / ratingend;
-    grid-template-columns: 50px 1fr;
-  }
+	.reviewForm {
+		grid-template-columns: [start] 1fr [ratingend] 1fr [end];
+	}
+
+	.rating {
+		grid-column: start / ratingend;
+		grid-template-columns: 50px 1fr;
+	}
 }
 
 @media screen and (max-width: 600px) {
-  .reviewForm {
-    grid-template-columns: [start] 1fr [end];
-  }
+	.reviewForm {
+		grid-template-columns: [start] 1fr [end];
+	}
 
-  .rating {
-    grid-column: start / end;
-    grid-template-columns: 50px 1fr;
-  }
+	.rating {
+		grid-column: start / end;
+		grid-template-columns: 50px 1fr;
+	}
 }
