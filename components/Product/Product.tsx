@@ -69,8 +69,8 @@ export const Product = motion(forwardRef(({ product, className, ...props }: Prod
 					{product.categories.map(category => <Tag className={styles.category} key={nanoid()} color={'ghost'}>{category}</Tag>)}
 				</div>
 
-				<div className={styles.priceTitle} area-hidden={true}>цена</div>
-				<div className={styles.creditTitle} area-hidden={true}>в кредит</div>
+				<div className={styles.priceTitle} aria-hidden={true}>цена</div>
+				<div className={styles.creditTitle} aria-hidden={true}>в кредит</div>
 				<div 
 					className={styles.ratingTitle}				
 				>

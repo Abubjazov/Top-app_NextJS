@@ -61,7 +61,7 @@ export const Menu = (): JSX.Element => {
 		return (
 			<ul className={styles.firstLevelList} >
 				{firstLevelMenu.map(firstLevelMenuItem => (
-					<li key={nanoid()} aria-expended={firstLevelMenuItem.id == firstCategory}>
+					<li key={nanoid()} aria-expanded={firstLevelMenuItem.id == firstCategory ? true : false}>
 						<Link href={`/${firstLevelMenuItem.route}`}>
 							<a>
 								<div className={ cn(styles.firstLevel, {
@@ -94,7 +94,7 @@ export const Menu = (): JSX.Element => {
 									onKeyDown={(key: KeyboardEvent ) => openSecondLevelKey(key, secondLevelMenuItem._id.secondCategory)}
 									className={styles.secondLevel} 
 									onClick={() => openSecondLevel(secondLevelMenuItem._id.secondCategory)}
-									aria-expended={secondLevelMenuItem.isOpened}
+									aria-expanded={secondLevelMenuItem.isOpened ? true : false}
 								>
 									{secondLevelMenuItem._id.secondCategory}
 								</button>
