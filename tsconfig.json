@@ -90,6 +90,7 @@
       "esnext"
     ],
     "allowJs": true,
+    "noImplicitAny": false,
     "noEmit": true,
     "incremental": true,
     "moduleResolution": "node",
