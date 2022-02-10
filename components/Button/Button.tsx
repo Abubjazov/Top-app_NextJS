@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { motion, useMotionValue } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import { ButtonProps } from './Button.props'
 import styles from './Button.module.css'

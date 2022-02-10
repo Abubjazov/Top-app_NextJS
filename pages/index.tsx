@@ -8,7 +8,7 @@ import { MenuItem } from '../interfaces/menu.interface'
 import { withLayout } from '../HOC/withLayout'
 import { API } from '../helpers/api'
 
-function Home({ menu }: HomeProps): JSX.Element {
+function Home(): JSX.Element {
 	return (
 		<>
 			<Htag tag='h1'>Заголовок</Htag>			
