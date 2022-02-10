@@ -1,5 +1,5 @@
-FROM node:16-alpine
-WORKDIR C:\PROJECTS\WEB\NEXTJS
+FROM node:14-alpine
+WORKDIR /opt/app
 ADD package.json package.json
 RUN npm install
 ADD . .
