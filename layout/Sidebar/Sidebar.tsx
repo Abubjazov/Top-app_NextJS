@@ -6,7 +6,7 @@ import { Search } from '../../components'
 import { SidebarProps } from './Sidebar.props'
 import styles from './Sidebar.module.css'
 
-import Logo from '../logo.svg' 
+import Logo from './logo.svg' 
 
 export const Sidebar = ({ className, ...props }: SidebarProps): JSX.Element => {
 	return (
