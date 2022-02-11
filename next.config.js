@@ -1,5 +1,4 @@
 module.exports = {
-  reactStrictMode: true,
   images: {
     domains: ['courses-top.ru']
   },
@@ -23,8 +22,8 @@ module.exports = {
         titleProp: true,
       },
       test: /\.svg$/,
-    });
+    })
 
-    return config;
+    return config
   },
 }
