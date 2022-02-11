@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import cn from 'classnames'
 import { motion, useReducedMotion } from 'framer-motion'
 
-import { IButton } from '../../components'
+import { IconButton } from '../../components'
 import { Sidebar } from '../Sidebar/Sidebar'
 
 import { HeaderProps } from './Header.props'
@@ -40,7 +40,7 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 			{...props}
 		>
 			<Logo />
-			<IButton 
+			<IconButton 
 				appearance='white' 
 				icon='MenuIcon'
 				onClick={() => setIsOpened(true)}
@@ -53,7 +53,7 @@ export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 				animate={isOpened ? 'opened' : 'closed'}
 			>
 				<Sidebar />
-				<IButton 
+				<IconButton 
 					className={styles.closeMenu} 
 					appearance='white' 
 					icon='CloseIcon'

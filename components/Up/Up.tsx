@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
 import { motion, useAnimation } from 'framer-motion'
 
+import { IconButton } from '..'
 import { useScrollY } from '../../hooks/useScrollY'
 
 import styles from './Up.module.css'
-import { IButton } from '../../components'
 
 export const Up = (): JSX.Element => {
 	const control = useAnimation()
@@ -27,7 +27,7 @@ export const Up = (): JSX.Element => {
 			animate={control}
 			initial={{opacity: 0}}
 		>
-			<IButton
+			<IconButton
 				appearance='primary' 
 				icon='RowIcon'
 				onClick={scrollToTop}
