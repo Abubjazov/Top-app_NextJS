@@ -9,7 +9,7 @@ import { Sidebar } from '../Sidebar/Sidebar'
 import { HeaderProps } from './Header.props'
 import styles from './Header.module.css'
 
-import Logo from '../logo.svg' 
+import Logo from './logo.svg' 
 
 export const Header = ({ className, ...props }: HeaderProps): JSX.Element => {
 	const [isOpened, setIsOpened] = useState<boolean>(false)
