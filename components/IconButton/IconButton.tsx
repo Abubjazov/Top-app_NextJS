@@ -1,14 +1,14 @@
 import cn from 'classnames'
 
 import { IconButtonProps, icons } from './IconButton.props'
-import styles from './IButton.module.css'
+import styles from './IconButton.module.css'
 
 export const IconButton = ({appearance, className, icon, ...props}: IconButtonProps): JSX.Element => {
 	const IconComponent = icons[icon]
 
 	return (
 		<button
-			className={cn(styles.ibutton, className, {
+			className={cn(styles.iconbutton, className, {
 				[styles.primary]: appearance === 'primary',
 				[styles.white]: appearance === 'white'
 			})}
