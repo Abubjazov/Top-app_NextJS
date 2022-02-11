@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm, Controller, SubmitHandler } from 'react-hook-form'
 import cn from 'classnames'
 import axios from 'axios'
@@ -10,7 +11,6 @@ import { ReviewFormProps } from './ReviewForm.props'
 import styles from './ReviewForm.module.css'
 
 import CrossIcon from './cross.svg'
-import { useState } from 'react'
 
 export const ReviewForm = ({ productId, className, isOpened, ...props }: ReviewFormProps): JSX.Element => {
 	const [successSend, setSuccessSend ] = useState<boolean>(false)
