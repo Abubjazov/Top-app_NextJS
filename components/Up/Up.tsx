@@ -4,7 +4,7 @@ import { motion, useAnimation } from 'framer-motion'
 import { useScrollY } from '../../hooks/useScrollY'
 
 import styles from './Up.module.css'
-import { IButton } from '../IButton/IButton'
+import { IButton } from '../../components'
 
 export const Up = (): JSX.Element => {
 	const control = useAnimation()
